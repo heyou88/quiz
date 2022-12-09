@@ -1,10 +1,16 @@
 import React from 'react'
 import './App.css'
+import Quiz from "./quiz"
 
 function App() {
+
+
   return (
     <div >
-      <h1>hello</h1>
+      <form >
+        <button  className='start-button' formaction={"Quiz"}>Start quiz</button>
+      </form>
+      <Quiz/>
     </div>
   )
 }
