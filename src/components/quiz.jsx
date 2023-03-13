@@ -1,29 +1,29 @@
 import React from 'react'
-import Question from "./quiz questions"
-export default function Quiz(){
+import Answers from "./quiz questions"
+export default function Quiz(props){
   const [restart,setRestart]=React.useState(false)
+  const answers = props.quizData
   function Restart(){
     setRestart(prevState=>!prevState)
   }
 
-  const [quizData, setQuizData] = React.useState({})
- React.useEffect(()=>{
-    async function getQuiz() {
-     const res = await fetch("https://opentdb.com/api.php?amount=5")
-     const data = await res.json()
-    setQuizData(data.results)
-   }
-   getQuiz();
- },[restart]
- )
+  const question = props.quizData.map(item=>{
+    return(
+           <div>
+            <h2>{item.question}</h2>
+            <Answers answers = {item.incorrect_answers +","+item.correct_answer}/>
+          </div>)
+  })
+
+
 
  return(
 
   <div>
-    <h1>quiz</h1>
+    <h3>{question}</h3>
     {/* <pre>{JSON.stringify(quizData, null, 2)}</pre> */}
-    <Question
-    quizdata={quizData} />
+    {/* <Question
+    /> */}
     <button onClick={Restart}>Start again</button>
   </div>
 

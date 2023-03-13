@@ -30,3 +30,10 @@ body {
   background-color: blue;
   cursor:pointer;
 }
+ .answers{
+  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+ }
